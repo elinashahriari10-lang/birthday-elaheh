@@ -1,0 +1,786 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Elaheh's Birthday 🎂</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background: linear-gradient(
+                135deg,
+                #fff3f7,
+                #f9e6ed,
+                #fff7f2
+            );
+
+            font-family: Arial, sans-serif;
+            color: #725c63;
+        }
+
+        .page {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 20px;
+        }
+
+        .glow {
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255, 220, 150, 0.55) 0%,
+                    rgba(235, 198, 120, 0.32) 28%,
+                    rgba(225, 185, 105, 0.16) 50%,
+                    transparent 72%
+                );
+
+            filter: blur(25px);
+
+            animation: glow 5s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                transform: scale(0.95);
+                opacity: 0.75;
+            }
+
+            50% {
+                transform: scale(1.08);
+                opacity: 1;
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+
+            width: 4px;
+            height: 4px;
+
+            background: #d9b86c;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 8px
+                rgba(218, 181, 105, 0.8);
+
+            animation:
+                sparkle 3s ease-in-out infinite;
+        }
+
+        .s1 {
+            top: 25%;
+            left: 18%;
+        }
+
+        .s2 {
+            top: 18%;
+            right: 20%;
+            animation-delay: 1s;
+        }
+
+        .s3 {
+            bottom: 22%;
+            left: 22%;
+            animation-delay: 2s;
+        }
+
+        .s4 {
+            bottom: 18%;
+            right: 17%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(0.7);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.4);
+            }
+        }
+
+        .card {
+            position: relative;
+
+            width: 82%;
+            max-width: 650px;
+
+            padding: 75px 45px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.82);
+
+            border: 1px solid
+                rgba(205, 170, 95, 0.38);
+
+            border-radius: 32px;
+
+            box-shadow:
+
+                0 20px 60px
+                rgba(150, 100, 110, 0.12),
+
+                0 0 55px
+                rgba(218, 181, 105, 0.22);
+
+            backdrop-filter: blur(12px);
+        }
+
+        #homePage {
+            display: flex;
+        }
+
+        .line {
+            width: 65px;
+            height: 2px;
+
+            margin: 0 auto 28px;
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent,
+                    #d5b36a,
+                    transparent
+                );
+        }
+
+        h1 {
+            margin: 0 0 20px;
+
+            color: #a95775;
+
+            font-size: 44px;
+
+            font-weight: 600;
+
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            margin: 0 0 38px;
+
+            font-size: 20px;
+
+            color: #806b72;
+
+            line-height: 1.6;
+        }
+
+        button {
+            border: none;
+
+            padding: 16px 38px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e8afc1,
+                    #d995ad
+                );
+
+            color: white;
+
+            font-size: 17px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 20px
+                rgba(180, 100, 125, 0.20);
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 25px
+                rgba(180, 100, 125, 0.28);
+        }
+
+        #surprisePage {
+            display: none;
+            flex-direction: column;
+
+            position: relative;
+        }
+
+        #surprisePage h2 {
+            margin-top: 0;
+            margin-bottom: 35px;
+
+            color: #a95775;
+
+            font-size: 34px;
+
+            font-weight: 600;
+        }
+
+        .pageBack {
+            position: absolute;
+
+            top: 22px;
+            left: 25px;
+
+            padding: 9px 17px;
+
+            font-size: 14px;
+
+            background: transparent;
+
+            color: #a95775;
+
+            box-shadow: none;
+
+            border: 1px solid
+                rgba(205, 170, 95, 0.28);
+        }
+
+        .pageBack:hover {
+            transform: translateY(-2px);
+
+            background:
+                rgba(255, 245, 248, 0.8);
+
+            box-shadow: none;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+
+            gap: 18px;
+
+            width: 100%;
+        }
+
+        .option {
+            width: 100%;
+
+            padding: 22px;
+
+            background:
+                rgba(255, 250, 252, 0.9);
+
+            border: 1px solid
+                rgba(205, 170, 95, 0.25);
+
+            border-radius: 22px;
+
+            color: #8d6070;
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 8px 25px
+                rgba(150, 100, 110, 0.07);
+        }
+
+        .option:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(150, 100, 110, 0.12);
+
+            border-color:
+                rgba(205, 170, 95, 0.45);
+        }
+
+        .option-icon {
+            display: block;
+
+            font-size: 27px;
+
+            margin-bottom: 8px;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content h2 {
+            color: #a95775;
+
+            font-size: 32px;
+
+            margin-bottom: 25px;
+        }
+
+        .content p {
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            margin-bottom: 25px;
+        }
+
+        .letterText {
+            text-align: left;
+
+            font-size: 17px;
+
+            line-height: 2;
+
+            color: #806b72;
+
+            margin-bottom: 25px;
+
+            white-space: normal;
+        }
+
+        .date {
+            margin-top: 25px;
+
+            text-align: right;
+
+            font-size: 15px;
+
+            color: #a95775;
+        }
+
+        .backButton {
+            margin-top: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #dca9b9,
+                    #c98da5
+                );
+        }
+
+        .photoGallery {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+        }
+
+        .photoGallery img {
+            width: 100%;
+
+            border-radius: 20px;
+
+            display: block;
+
+            box-shadow:
+                0 8px 25px
+                rgba(150, 100, 110, 0.12);
+        }
+
+        audio {
+            width: 100%;
+
+            margin: 15px 0 25px;
+        }
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding: 20px;
+            }
+
+            .glow {
+                width: 500px;
+                height: 500px;
+            }
+
+            .card {
+                width: 92%;
+
+                padding: 65px 28px;
+
+                border-radius: 28px;
+            }
+
+            h1 {
+                font-size: 36px;
+
+                line-height: 1.25;
+            }
+
+            p {
+                font-size: 18px;
+
+                margin-bottom: 35px;
+            }
+
+            button {
+                padding: 16px 36px;
+
+                font-size: 17px;
+            }
+
+            #surprisePage h2 {
+                font-size: 30px;
+
+                margin-top: 10px;
+            }
+
+            .option {
+                padding: 21px;
+
+                font-size: 18px;
+            }
+
+            .pageBack {
+                top: 17px;
+
+                left: 18px;
+
+                padding: 8px 14px;
+
+                font-size: 13px;
+            }
+
+            .letterText {
+                font-size: 16px;
+
+                line-height: 1.9;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="page">
+
+        <div class="glow"></div>
+
+        <div class="sparkle s1"></div>
+        <div class="sparkle s2"></div>
+        <div class="sparkle s3"></div>
+        <div class="sparkle s4"></div>
+
+        <!-- HOME PAGE -->
+
+        <div class="card" id="homePage">
+
+            <div class="line"></div>
+
+            <h1>
+                Happy Birthday, Elaheh! 🎂
+            </h1>
+
+            <p>
+                A little surprise, made just for you ♡
+            </p>
+
+            <button onclick="openSurprise()">
+                Open your surprise ✨
+            </button>
+
+        </div>
+
+
+        <!-- SURPRISE PAGE -->
+
+        <div class="card" id="surprisePage">
+
+            <button
+                class="pageBack"
+                onclick="goHome()"
+            >
+                ← Back
+            </button>
+
+            <h2>
+                Something for you ♡
+            </h2>
+
+
+            <!-- MENU -->
+
+            <div class="options" id="menu">
+
+                <div
+                    class="option"
+                    onclick="showContent('letter')"
+                >
+
+                    <span class="option-icon">
+                        💌
+                    </span>
+
+                    A Little Letter
+
+                </div>
+
+
+                <div
+                    class="option"
+                    onclick="showContent('memories')"
+                >
+
+                    <span class="option-icon">
+                        📸
+                    </span>
+
+                    Our Memories
+
+                </div>
+
+
+                <div
+                    class="option"
+                    onclick="showContent('song')"
+                >
+
+                    <span class="option-icon">
+                        🎵
+                    </span>
+
+                    A Song for You
+
+                </div>
+
+            </div>
+
+
+            <!-- LETTER -->
+
+            <div
+                class="content"
+                id="letter"
+            >
+
+                <h2>
+                    A Little Letter 💌
+                </h2>
+
+                <div class="letterText">
+
+                    الهه جان 🤍
+
+                    <br><br>
+
+                    تولدت مبارک، خواهرِ بزرگ‌تر جونِ من. 🎂
+
+                    <br><br>
+
+                    شاید همیشه بهت نگم، ولی واقعاً خوشحالم که تو رو تو زندگیم دارمت.
+                    میدونم ما معمولا سر چیزای مسخره بحث می کنیم و واقعا از هم دلخور میشیم…
+                    <br>
+                    ولی با همه‌ی اینا، تو یکی از مهم‌ترین آدم‌های زندگی منی :))
+                    <br>
+                    بودی، و همیشه خواهی ماند🩷
+
+                    <br><br>
+
+                    یه عالمه خاطره با هم داریم؛ از خنده‌های الکی و حرف‌های بی‌خود گرفته تا لحظه‌هایی که شاید همون موقع خیلی معمولی به نظر می‌رسیدن، ولی بعدها می‌فهمیم چقدر باارزش بودن.
+
+                    <br><br>
+
+                    از ته دلم امیدوارم سال جدید زندگیت پر از اتفاق‌های قشنگ، آرامش، خنده‌های واقعی و چیزهایی باشه که مدت‌ها منتظرشون بودی.
+
+                    <br><br>
+
+                    و امیدوارم هرچقدر هم بزرگ‌تر شدیم، باز یه گوشه‌ای از زندگی همدیگه رو داشته باشیم.
+                    <br>
+                    همین‌طوری که الان داریم.❤️‍🔥
+
+                    <br><br>
+
+                    تولدت مبارک الهه.
+                    <br>
+                    خیلی دوستت دارم، حتی اگر همیشه نشونش ندم :)
+
+                    <div class="date">
+                        — از طرف خواهر عزیزت، الینا
+                        <br>
+                        Date:5/5/5
+                    </div>
+
+                </div>
+
+                <button
+                    class="backButton"
+                    onclick="backToMenu()"
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <!-- MEMORIES -->
+
+            <div
+                class="content"
+                id="memories"
+            >
+
+                <h2>
+                    Our Memories 📸
+                </h2>
+
+                <div class="photoGallery">
+
+                    <img
+                        src="photos/photo1.jpg"
+                        alt="Our memory"
+                    >
+
+                    <img
+                        src="photos/photo2.jpg"
+                        alt="Our memory"
+                    >
+
+                    <img
+                        src="photos/photo3.jpg"
+                        alt="Our memory"
+                    >
+
+                </div>
+
+                <button
+                    class="backButton"
+                    onclick="backToMenu()"
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+
+            <!-- SONG -->
+
+            <div
+                class="content"
+                id="song"
+            >
+
+                <h2>
+                    A Song for You 🎵
+                </h2>
+
+                <p>
+                    A little birthday song, just for you ♡
+                </p>
+
+                <audio controls>
+
+                    <source
+                        src="music/birthday.mp3"
+                        type="audio/mpeg"
+                    >
+
+                    Your browser does not support
+                    the audio player.
+
+                </audio>
+
+                <button
+                    class="backButton"
+                    onclick="backToMenu()"
+                >
+                    ← Back
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function openSurprise() {
+
+            document.getElementById("homePage").style.display =
+                "none";
+
+            document.getElementById("surprisePage").style.display =
+                "flex";
+
+        }
+
+
+        function goHome() {
+
+            document.getElementById("surprisePage").style.display =
+                "none";
+
+            document.getElementById("homePage").style.display =
+                "flex";
+
+            backToMenu();
+
+        }
+
+
+        function showContent(contentId) {
+
+            document.getElementById("menu").style.display =
+                "none";
+
+            document.getElementById(contentId).style.display =
+                "block";
+
+        }
+
+
+        function backToMenu() {
+
+            document.getElementById("letter").style.display =
+                "none";
+
+            document.getElementById("memories").style.display =
+                "none";
+
+            document.getElementById("song").style.display =
+                "none";
+
+            document.getElementById("menu").style.display =
+                "flex";
+
+        }
+
+    </script>
+
+</body>
+</html>
